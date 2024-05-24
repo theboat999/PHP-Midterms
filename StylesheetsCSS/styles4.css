@@ -65,14 +65,15 @@ body {
 }
 
 .upload-form button {
-    background-color: #007bff;
+    background-color: #4CAF50;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 .upload-form button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

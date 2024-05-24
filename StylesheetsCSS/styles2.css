@@ -8,6 +8,23 @@ body {
     margin: 0;
 }
 
+.back-button {
+    background-color: #4CAF50; /* Green background */
+    border: none;             /* Remove borders */
+    color: white;             /* White text */
+    padding: 15px 32px;       /* Some padding */
+    text-align: center;       /* Centered text */
+    text-decoration: none;    /* Remove underline */
+    display: inline-block;    /* Make the link like a button */
+    font-size: 16px;          /* Increase font size */
+    margin: 4px 2px;          /* Some margin */
+    cursor: pointer;          /* Pointer/hand icon */
+    border-radius: 12px;      /* Rounded corners */
+    position: absolute;       /* Absolute positioning */
+    top: 10px;                /* Distance from the top */
+    left: 10px;               /* Distance from the left */
+}
+
 .admin-container {
     background-color: #ffffff;
     padding: 75px;
@@ -48,4 +65,19 @@ body {
 .error {
     color: red;
     margin-top: 10px;
+}
+
+.bottom-back-button {
+    /* Add your custom styles here */
+    background-color: #4CAF50; /* Example: Green background */
+    color: white;             /* White text */
+    border: none;             /* No border */
+    padding: 10px 20px;       /* Padding */
+    text-align: center;       /* Centered text */
+    text-decoration: none;    /* No underline */
+    display: inline-block;    /* Inline-block element */
+    font-size: 16px;          /* Font size */
+    margin: 4px 2px;          /* Margin */
+    cursor: pointer;          /* Pointer cursor on hover */
+    border-radius: 8px;       /* Rounded corners */
 }
