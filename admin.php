@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="StylesheetsCSS/styles2.css">
 </head>
 <body>
+    <button class="back-button" onclick="goBack()">Back</button>
     <div class="admin-container">
         <h2>Admin Panel</h2>
         <form action="admin.php" method="post">
@@ -37,12 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Login</button>
         </form>
 
-        <!-- Error message prompt para kapag mali ang password Or username-->
         <?php
         if ($error) {
             echo "<p class='error'>$error</p>";
         } 
         ?>
     </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
 </body>
 </html>

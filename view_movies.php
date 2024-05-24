@@ -34,6 +34,17 @@ function saveMoviesToFile($filename, $movies)
 // Call the function to get movies from the file
 $moviesList = getMoviesFromFile('movies.txt');
 
+// Handle search functionality
+$searchQuery = $_GET['search'] ?? '';
+if ($searchQuery) {
+    $moviesList = array_filter($moviesList, function ($movie) use ($searchQuery) {
+        return stripos($movie['title'], $searchQuery) !== false ||
+               stripos($movie['genre'], $searchQuery) !== false ||
+               stripos($movie['year'], $searchQuery) !== false ||
+               stripos($movie['director'], $searchQuery) !== false;
+    });
+}
+
 // Check if the form is submitted to add a new movie
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_movie'])) {
     $title = $_POST['title'] ?? '';
@@ -116,11 +127,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View All Movies</title>
-    <link rel="stylesheet" href="styles4.css">
+    <link rel="stylesheet" href="StylesheetsCSS/styles4.css">
 </head>
 <body>
     <div class="content">
         <div class="movie-container">
+            <form method="get" action="view_movies.php">
+                <input type="text" name="search" placeholder="Search for a movie" value="<?php echo htmlspecialchars($searchQuery); ?>">
+                <button type="submit">Search</button>
+            </form>
             <div class="movie-list">
                 <?php foreach ($moviesList as $index => $movie) : ?>
                     <div class="movie-item">
@@ -130,10 +145,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
                             <p><strong>Genre:</strong> <?php echo $movie['genre']; ?></p>
                             <p><strong>Year:</strong> <?php echo $movie['year']; ?></p>
                             <p><strong>Director:</strong> <?php echo $movie['director']; ?></p>
-                            <a href="edit_movie.php?edit=<?php echo $index; ?>">Edit</a>
+                            <a href="?edit=<?php echo $index; ?>">Edit</a>
                             <a href="?delete=<?php echo $index; ?>" onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
                         </div>
                     </div>
+                    <?php if (isset($_GET['edit']) && $_GET['edit'] == $index) : ?>
+                        <div class="movie-item edit-form">
+                            <h2>Edit Movie</h2>
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="edit_index" value="<?php echo $index; ?>">
+                                <label for="title">Title:</label>
+                                <input type="text" id="title" name="title" value="<?php echo $movie['title']; ?>" required>
+                                <br>
+                                <label for="genre">Genre:</label>
+                                <input type="text" id="genre" name="genre" value="<?php echo $movie['genre']; ?>" required>
+                                <br>
+                                <label for="year">Year:</label>
+                                <input type="number" id="year" name="year" value="<?php echo $movie['year']; ?>" required>
+                                <br>
+                                <label for="director">Director:</label>
+                                <input type="text" id="director" name="director" value="<?php echo $movie['director']; ?>" required>
+                                <br>
+                                <label for="image">Movie Image:</label>
+                                <input type="file" id="image" name="image" accept="image/*">
+                                <br>
+                                <button type="submit" name="edit_movie">Save Changes</button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>
