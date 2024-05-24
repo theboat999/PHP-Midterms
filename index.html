@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,8 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+
+    <!-- para sa main page ito (start)-->
     <div class="container">
         <div class="card">
             <img class="background" src="01.jpg" alt="">
@@ -60,7 +64,9 @@
             <div class="backdrop"></div>
         </div>
     </div>
+    <!-- para sa main page ito (end)-->
 
+    <!-- Onting JS lang-->
     <script>
     const cardsContainer = document.querySelector(".container");
 
@@ -69,18 +75,16 @@
 
         if (!target) return;
 
-        // Check if the clicked card is the "Sign-in (ADMIN)" card
         if (target.classList.contains("admin")) {
-            // Open the new session named "admin.php"
-            window.open("admin.php", "_blank");
+            // Mabuksan na yung admin.pe ets pey
+            window.location.href = "admin.php";
         }
 
-        // Remove the "active" class from all cards
+        // pang epeks epeks lang i2
         cardsContainer.querySelectorAll(".card").forEach((card) => {
             card.classList.remove("active");
         });
 
-        // Add the "active" class to the clicked card
         target.classList.add("active");
     });
 </script>
