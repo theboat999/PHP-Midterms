@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +49,7 @@
             <div class="backdrop"></div>
         </div>
 
-        <div class="card">
+        <div class="card movies">
             <img class="background" src="image_front_page/04.jpg" alt="">
             <div class="card-content">
                 <div class="profile-image">
@@ -80,6 +78,11 @@
             window.location.href = "admin.php";
         }
 
+        if (target.classList.contains("movies")) {
+            // Mabuksan na yung view_movies.php
+            window.location.href = "movie_list.php";
+        }
+
         // pang epeks epeks lang i2
         cardsContainer.querySelectorAll(".card").forEach((card) => {
             card.classList.remove("active");
@@ -88,6 +91,5 @@
         target.classList.add("active");
     });
 </script>
-
 </body>
 </html>

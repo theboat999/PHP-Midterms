@@ -36,8 +36,9 @@ $moviesList = getMoviesFromFile('movies.txt');
 
 // Handle search functionality
 $searchQuery = $_GET['search'] ?? '';
+$searchResults = [];
 if ($searchQuery) {
-    $moviesList = array_filter($moviesList, function ($movie) use ($searchQuery) {
+    $searchResults = array_filter($moviesList, function ($movie) use ($searchQuery) {
         return stripos($movie['title'], $searchQuery) !== false ||
                stripos($movie['genre'], $searchQuery) !== false ||
                stripos($movie['year'], $searchQuery) !== false ||
@@ -80,7 +81,7 @@ if (isset($_GET['delete'])) {
         $moviesList = array_values($moviesList);
         saveMoviesToFile('movies.txt', $moviesList);
         // Refresh the page to update the movie list
-        header('Location: view_movies.php');
+        header('Location: view_movies.php?search=' . urlencode($searchQuery));
         exit;
     }
 }
@@ -115,10 +116,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
         }
 
         // Refresh the page to update the movie list after editing
-        header('Location: view_movies.php');
+        header('Location: view_movies.php?search=' . urlencode($searchQuery));
         exit;
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -132,12 +134,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
 <body>
     <div class="content">
         <div class="movie-container">
-            <form method="get" action="view_movies.php">
-                <input type="text" name="search" placeholder="Search for a movie" value="<?php echo htmlspecialchars($searchQuery); ?>">
-                <button type="submit">Search</button>
-            </form>
+            <div class="search-form">
+                <form method="get" action="view_movies.php">
+                    <input type="text" name="search" placeholder="Search for a movie" value="<?php echo htmlspecialchars($searchQuery); ?>">
+                    <button type="submit" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' height=\'24px\' viewBox=\'0 -960 960 960\' width=\'24px\' fill=\'%23000000\'><path d=\'M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z\'/></svg>'); background-repeat: no-repeat; background-size: 24px 24px; padding-left: 28px;"></button>
+                </form>
+            </div>
             <div class="movie-list">
-                <?php foreach ($moviesList as $index => $movie) : ?>
+                <?php if ($searchQuery && empty($searchResults)) : ?>
+                    <p>Your search did not match any movies.</p>
+                <?php endif; ?>
+                <?php foreach (($searchQuery ? $searchResults : $moviesList) as $index => $movie) : ?>
                     <div class="movie-item">
                         <img src="movie_images/<?php echo $movie['image']; ?>" alt="<?php echo $movie['title']; ?> Image">
                         <div class="movie-info">
@@ -145,8 +152,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
                             <p><strong>Genre:</strong> <?php echo $movie['genre']; ?></p>
                             <p><strong>Year:</strong> <?php echo $movie['year']; ?></p>
                             <p><strong>Director:</strong> <?php echo $movie['director']; ?></p>
-                            <a href="?edit=<?php echo $index; ?>">Edit</a>
-                            <a href="?delete=<?php echo $index; ?>" onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
+                            <?php if ($searchQuery) : ?>
+                                <a href="?search=<?php echo urlencode($searchQuery); ?>&edit=<?php echo $index; ?>">Edit</a>
+                                <a href="?search=<?php echo urlencode($searchQuery); ?>&delete=<?php echo $index; ?>" onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php if (isset($_GET['edit']) && $_GET['edit'] == $index) : ?>
@@ -198,5 +207,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
             </form>
         </div>
     </div>
+    <?php include 'footer.html'; ?>
 </body>
 </html>

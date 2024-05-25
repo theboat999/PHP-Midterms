@@ -27,8 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="StylesheetsCSS/styles2.css">
 </head>
 <body>
-    <button class="back-button" onclick="goBack()">Back</button>
-    <div class="admin-container">
+    <button class="back-button" onclick="goBack()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="m287-446.67 240 240L480-160 160-480l320-320 47 46.67-240 240h513v66.66H287Z"/></svg>
+    </button>
+    <div class="admin-container">           
         <h2>Admin Panel</h2>
         <form action="admin.php" method="post">
             <input type="text" id="username" name="username" placeholder="Username" required>
