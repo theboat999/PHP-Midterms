@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e9e6dd ;
+    font-family: Inter, sans-serif;
+}
+
+.content {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #e9e6dd;
+}
+
+.title-container {
+    float: right;
+    margin-right: 200px;
+}
+
+.title-container h1 {
+    font-size: 115px;
+    margin-bottom: 15px;
+}
+
+.title-container h2 {
+    margin-bottom: 60px;
+}
+
+.title-container h3 {
+    margin-top: 90px;
+    font-size: 50px;
+}
+
+.title-container p {
+    font-family: Inter, sans-serif;
+    font-size: 50px;
+}
+
+.description h1 {
+    margin-top: 50px;
+}
+
+.ratings h1 {
+    margin-top: 75px;
+    text-align: center;
+}
+
+.recommended-images {
+    justify-content: center;
+    margin-top: 40px;
+    display: flex;
+}
+
+.recommended-images img {
+    width: 280px; /* Set the width for each recommended image */
+    height: 400px; /* Set the height for each recommended image */
+    margin-right: 120px;
+    margin-bottom: 10px;
+}
+
+.movie-caption {
+    margin-bottom: 150px;
+}
+
+.movie-caption p{
+    margin-top: 10px;
+}
+.movie-container {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+}
+
+
+.movie-list {
+    display: flex;
+    animation: scroll 30s linear infinite;
+}
+
+.movie-item {
+    flex: 0 0 auto;
+    margin: 10px;
+    height: 300px; /* Fixed height for consistency */
+}
+
+.movie-item img {
+    width: 100%; /* Ensure the image fills the container */
+    height: 100%; /* Ensure the image fills the container */
+    object-fit: cover; /* Maintain aspect ratio and cover container */
+    border-radius: 8px;
+}
+
+/* Infinite scroll keyframes */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+

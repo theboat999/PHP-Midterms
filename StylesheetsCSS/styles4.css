@@ -1,17 +1,17 @@
-/* styles4.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: Inter, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #e9e6dd;
 }
 
 .content {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #e9e6dd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -29,9 +29,9 @@ body {
 }
 
 .movie-item img {
-    width: 100%; /* Ensure image takes full width of its container */
-    height: 400px; /* Set a fixed height for the image */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
     border-radius: 5px;
 }
 
@@ -65,14 +65,14 @@ body {
 }
 
 .upload-form button {
-    background-color: #4CAF50;
+    background-color: #0274bd;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 .upload-form button:hover {
-    background-color: #45a049;
+    background-color: #0263a0;
     cursor: pointer;
 }
 
@@ -81,10 +81,6 @@ body {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
     }
 }
-
-/* styles4.css */
-
-/* Other styles remain unchanged */
 
 .movie-container {
     max-height: 500px; /* Set a specific height for the movie container */
@@ -114,4 +110,83 @@ body {
     border-radius: 5px;
 }
 
-/* Other styles remain unchanged */
+.edit-form {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form h2 {
+    margin-bottom: 10px;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="number"],
+.edit-form input[type="file"],
+.edit-form button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.edit-form button {
+    background-color: #0274bd;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-form button:hover {
+    background-color: #0263a0;
+    cursor: pointer;
+}
+
+.delete-link {
+    color: #f44336;
+    margin-left: 10px;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+.search-form button {
+    margin-left: 5px;
+    background-color: #e9e6dd;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.1s ease-in;
+}
+
+.search-form button:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+
