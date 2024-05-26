@@ -36,7 +36,7 @@ $moviesList = getMoviesFromFile('movies.txt');
     <div class="content">
         <div class="movie-container">
             <div class="video-container">
-                 <video controls width="1125" height="650">
+                 <video controls width="1130" height="650">
                 <source src="image_front_page/video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -95,7 +95,7 @@ $moviesList = getMoviesFromFile('movies.txt');
             <p>-coms out there. It is so good that I</p>
             <p>could watch it on repeat for hours. So</p>
             <p>much better than the movies I was</p>
-            <p>suggested by my son. I would definitely</p>
+            <p>suggested by the web. I would definitely</p>
             <p>recommend watching this movie to fall</p>
             <p>in love with amazingness.</p>
         </div>
