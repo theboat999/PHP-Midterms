@@ -10,7 +10,7 @@
 
     <!-- para sa main page ito (start)-->
     <div class="container">
-        <div class="card">
+        <div class="card signup">
             <img class="background" src="image_front_page/01.jpg" alt="">
             <div class="card-content">
                 <div class="profile-image">
@@ -36,7 +36,7 @@
             <div class="backdrop"></div>
         </div>
 
-        <div class="card">
+        <div class="card login">
             <img class="background" src="image_front_page/03.webp" alt="">
             <div class="card-content">
                 <div class="profile-image">
@@ -82,6 +82,17 @@
             // Mabuksan na yung view_movies.php
             window.location.href = "movie_list.php";
         }
+
+        if (target.classList.contains("signup")) {
+            // Mabuksan na yung signup.php
+            window.location.href = "signup.php"
+        }
+
+        if (target.classList.contains("login")) {
+            // Mabuksan na yung login.php
+            window.location.href = "login.php";
+        }
+
 
         // pang epeks epeks lang i2
         cardsContainer.querySelectorAll(".card").forEach((card) => {

@@ -229,12 +229,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_movie'])) {
                     <input type="file" id="image" name="image" accept="image/*">
                     <br>
                     <label for="digital">Copy:</label>
-                    <?php $copyArray = is_array($movie['copy']) ? $movie['copy'] : []; ?>
-<input type="checkbox" id="digital" name="copy[]" value="Digital" <?php echo in_array('Digital', $copyArray) ? 'checked' : ''; ?>> DIGITAL
-<input type="checkbox" id="dvd" name="copy[]" value="DVD" <?php echo in_array('DVD', $copyArray) ? 'checked' : ''; ?>> DVD
-<input type="checkbox" id="blueray" name="copy[]" value="Blu-ray" <?php echo in_array('Blu-ray', $copyArray) ? 'checked' : ''; ?>> BLUE-RAY
-                    <br>
-                    <button type="submit" name="edit_movie">Save Changes</button>
+                        <?php $copyArray = is_array($movie['copy']) ? $movie['copy'] : []; ?>
+                        <input type="checkbox" id="digital" name="copy[]" value="Digital" <?php echo in_array('Digital', $copyArray) ? 'checked' : ''; ?>> DIGITAL
+                        <input type="checkbox" id="dvd" name="copy[]" value="DVD" <?php echo in_array('DVD', $copyArray) ? 'checked' : ''; ?>> DVD
+                        <input type="checkbox" id="blueray" name="copy[]" value="Blu-ray" <?php echo in_array('Blu-ray', $copyArray) ? 'checked' : ''; ?>> BLUE-RAY
+                        <br>
+                        <button type="submit" name="edit_movie">Save Changes</button>
                 </form>
             </div>
         <?php endif; ?>
